@@ -14,6 +14,8 @@ function verificarNumero(numero){
     }
     if(numero>0){
         alert("O número é positivo.")
+
+        
     }
     if(numero<0){
         alert("O número é negativo.")
