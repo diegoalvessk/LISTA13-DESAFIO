@@ -37,8 +37,16 @@ var condicao = 1
                     if(condicao == 2){
                         fazerLogin()
                     } 
+                    if(condicao == 3){
+                        excluir()
+                    } 
            } 
 
+           function desejafazer(){
+            condicao = parseInt(prompt("O que você deseja fazer?" + "\n" + "1 = Cadastrar"+  "\n" + "2 = Login"+  "\n" + "3 = Excluir Cadastro"+  "\n" + "4 = Encerrar o programa"))
+            return condicao 
+            }
+            
            function fazerCadastro(){
                 pedirNome() 
                 indexnome++
@@ -61,9 +69,9 @@ var condicao = 1
                 for(var index=0; index<arrayNome.length; index++){
                     if(nomeLogin == arrayNome[index]){
                            if(senhaLogin == arraySenha[index]){
-                               alert("Login realizado!")}
+                               alert("Login realizado com sucesso!")}
                            else{
-                            alert("Login não foi realizado!")}
+                            alert("Nome ou senha incorretos!")}
                             var c = 0
                             c++
                      }
@@ -72,10 +80,30 @@ var condicao = 1
                      }
                 }  
 
-            function desejafazer(){
-                condicao = parseInt(prompt("O que você deseja fazer? 1 = Cadastrar; 2 = Login; 3 = Excluir Cadastro; 4 = Encerrar o programa"))
-                return condicao
+            function excluir(){
+                var cont = 0
+                var nome = prompt("Qual nome você deseja excluir?")
+                for (let index2 = 0; index2 < arrayNome.length; index2++) {
+                        if(nome == arrayNome[index2]){
+                            arrayNome[index2] = 0
+                            arraySenha[index2] = 0
+                            for (let index3 = 0; index3 < arrayNome.length; index3++) {
+                                if(arrayNome[index2] == 0){
+                                    alert("Exclusão realizada com sucesso")
+                                    for (let index4 = index2; index4 < arrayNome.length; index4++) {
+                                        arrayNome[index4] = arrayNome[index4 + 1]
+                                        arraySenha[index4] = arraySenha[index4 + 1]
+                                    }
+                                }
+                            }
+                            cont++
+                        }
+                }
+                if(cont == 0){
+                    alert("Não existe usuario com este nome")
+                }
             }
+
 
             
     
