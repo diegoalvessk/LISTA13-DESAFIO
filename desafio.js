@@ -25,49 +25,57 @@ var indexnome = 0
 var indexsenha = 0
 var arrayNome = []
 var arraySenha = []
-var nome
-var senha
-var condicao = 0
+var nome = ""
+var senha = ""
+var condicao = 1 
 
-while(condicao != 4){
+            while(condicao != 4){
+                condicao = desejafazer()
+                    if(condicao == 1){
+                        fazerCadastro()
+                    }
+                    if(condicao == 2){
+                        fazerLogin()
+                    } 
+           } 
 
-            condicao = desejafazer(condicao)
-            
-            while(condicao == 1){
-                arraySenha[indexsenha] = pedirNome(nome, indexnome)
-                arrayNome[indexnome] = pedirSenha(senha, indexsenha)
+           function fazerCadastro(){
+                pedirNome() 
                 indexnome++
+                pedirSenha()
                 indexsenha++
-                condicao = desejafazer(condicao)
             }
             
-            function pedirNome(nome, indexnome){
-                nome = prompt("Informe seu nome: ")
-                
-                if(indexnome != 0){
-                }    
-                return nome
+            function pedirNome(){
+                arrayNome[indexnome] = prompt("CADASTRO: Informe seu nome: ")   
             }
 
-            function pedirSenha(senha, indexsenha){
-                senha = prompt("Informe sua senha: ")
-                if(indexsenha != 0){
-                }
-                return senha
+            function pedirSenha(){
+                arraySenha[indexsenha] = prompt("CADASTRO:  Informe sua senha: ")
             }
 
-            function desejafazer(condicao){
+            function fazerLogin(){
+                var nomeLogin = prompt("Informe o seu nome")
+                var senhaLogin = prompt("Informe a sua senha")
+                var c = 0
+                for(var index=0; index<arrayNome.length; index++){
+                    if(nomeLogin == arrayNome[index]){
+                           if(senhaLogin == arraySenha[index]){
+                               alert("Login realizado!")}
+                           else{
+                            alert("Login não foi realizado!")}
+                            var c = 0
+                            c++
+                     }
+                     if(c == 0){
+                        alert("Login não foi realizado!")}
+                     }
+                }  
+
+            function desejafazer(){
                 condicao = parseInt(prompt("O que você deseja fazer? 1 = Cadastrar; 2 = Login; 3 = Excluir Cadastro; 4 = Encerrar o programa"))
-                if(condicao == 2){
-                    fazerLogin()
-                }
-                if(condicao == 3){
-
-                }
                 return condicao
             }
-        }
 
-        console.log(arrayNome)
-        console.log(arraySenha)
-
+            
+    
